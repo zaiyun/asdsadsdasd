@@ -14,7 +14,8 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 6.0f;
     public float rotateSpeed = 6.0f;
     private float gravity = 400.0f;
-  
+    public float jumpSpeed = 8.0f;
+
     private Vector3 moveDirection =  Vector3.zero;
     private CharacterController controller;
 
@@ -33,6 +34,10 @@ public class CharacterMovement : MonoBehaviour
         moveDirection *= speed;
 
         moveDirection.y -= gravity*Time.deltaTime;
+        if (Input.GetButton("Jump"))
+        {
+            moveDirection.y = jumpSpeed;
+        }
 
         controller.Move(moveDirection * Time.deltaTime);
         if (Input.GetKey(KeyCode.E))
