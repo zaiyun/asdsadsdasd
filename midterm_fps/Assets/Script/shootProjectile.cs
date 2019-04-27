@@ -28,7 +28,7 @@ public class shootProjectile : MonoBehaviour
             Rigidbody clone;
             clone = Instantiate(projectile, this.transform.position, transform.rotation);
             clone.velocity = this.transform.TransformDirection(Vector3.up*speed);
-          
+           
             timer = 0;
         }
     }

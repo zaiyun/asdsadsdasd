@@ -8,8 +8,9 @@ public class PopOutScript : MonoBehaviour
     BoxCollider coll;
     float length;
     Vector3 position;
+    public float popOutSpeed = 3.0f;
     public float popOutDistance;
-    bool pop = false;
+   public bool pop = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,17 +31,18 @@ public class PopOutScript : MonoBehaviour
         {
         
             position = popoutObj.localPosition;
-            position.y = popOutDistance;
-            popoutObj.localPosition = position;
+            if (position.y <= popOutDistance)
+            {
+                position.y += popOutSpeed;
+                popoutObj.localPosition = position;
+            }
+            else
+            {
+                position.y = popOutDistance;
+            }
 
 
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "projectile")
-        {
-            pop = !pop;
-        }
-    }
+   
 }

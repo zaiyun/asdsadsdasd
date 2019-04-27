@@ -18,8 +18,9 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
     private float gravity = 20.0f;
-
-    private Vector3 moveDirection = Vector3.zero;
+    public static bool pushed;
+    public static float pushedHeight;
+    public static Vector3 moveDirection = Vector3.zero;
 
     void Start()
     {
@@ -28,24 +29,38 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+    
         if (characterController.isGrounded)
         {
-            // We are grounded, so recalculate
-            // move direction directly from axes
+            moveDirection.y = 0.0f;
+            moveDirection.x = Input.GetAxis("Horizontal");
+            moveDirection.z = Input.GetAxis("Vertical");
 
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            //moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
-
+        
             if (Input.GetButton("Jump"))
             {
                 moveDirection.y = jumpSpeed;
             }
         }
+        else
+        {
+            moveDirection.x = Input.GetAxis("Horizontal")*speed;
+            moveDirection.z = Input.GetAxis("Vertical")*speed;
+            moveDirection = transform.TransformDirection(moveDirection);
 
-        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
-        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
-        // as an acceleration (ms^-2)
+
+        }
+        if (pushed)
+        {
+            moveDirection.y = pushedHeight;
+            pushed = false;
+        }
+
+
+
         moveDirection.y -= gravity * Time.deltaTime;
 
         // Move the controller
