@@ -11,35 +11,47 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     private float slowdownFactor = 0.2f;
+
+
+    CharacterController characterController;
+
     public float speed = 6.0f;
-    public float rotateSpeed = 6.0f;
-    private float gravity = 400.0f;
     public float jumpSpeed = 8.0f;
+    private float gravity = 20.0f;
 
-    private Vector3 moveDirection =  Vector3.zero;
-    private CharacterController controller;
-
+    private Vector3 moveDirection = Vector3.zero;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
     }
-
 
     void Update()
     {
-
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= speed;
-
-        moveDirection.y -= gravity*Time.deltaTime;
-        if (Input.GetButton("Jump"))
+        if (characterController.isGrounded)
         {
-            moveDirection.y = jumpSpeed;
+            // We are grounded, so recalculate
+            // move direction directly from axes
+
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+
+            if (Input.GetButton("Jump"))
+            {
+                moveDirection.y = jumpSpeed;
+            }
         }
 
-        controller.Move(moveDirection * Time.deltaTime);
+        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
+        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
+        // as an acceleration (ms^-2)
+        moveDirection.y -= gravity * Time.deltaTime;
+
+        // Move the controller
+        characterController.Move(moveDirection * Time.deltaTime);
+    
+
         if (Input.GetKey(KeyCode.E))
         {
             slowMo();
