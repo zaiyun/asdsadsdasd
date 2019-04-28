@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class die : MonoBehaviour
 {
@@ -17,12 +18,13 @@ public class die : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
         print("enter");
-        if (other.gameObject.name == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            TimerScript.lose = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

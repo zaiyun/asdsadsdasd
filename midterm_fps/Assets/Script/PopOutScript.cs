@@ -5,12 +5,11 @@ using UnityEngine;
 public class PopOutScript : MonoBehaviour
 {
     private Transform popoutObj;
-    BoxCollider coll;
-    float length;
     Vector3 position;
     Vector3 originalPos;
     public float popOutSpeed = 3.0f;
     public float popOutDistance;
+    public static bool disableAll; 
    public bool pop = false;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +25,14 @@ public class PopOutScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pop)
+        if (disableAll==true)
+        {
+           pop = false;
+           
+        }
+
+
+        if (pop==true)
         {
 
 

@@ -10,10 +10,12 @@ public class shooting : MonoBehaviour
     public float speed = 40;
     public Transform spawnPos;
     public AudioSource audio;
+    public int ammo = 4;
+    public bool outOfAmmo = false;
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -21,31 +23,35 @@ public class shooting : MonoBehaviour
     {
         spawn = spawnPos.position;
 
-        if (Input.GetMouseButton(0))
-        {
-              
-            if (timer > 8)
-            {
-                Rigidbody clone;
-                audio.PlayOneShot(audio.clip);
-                clone = Instantiate(projectile, spawn, transform.rotation);
-                clone.velocity = Camera.main.transform.TransformDirection(Vector3.forward * speed);
-               
-                timer = 0;
-               
-            }
+        //autoMode
+        //if (Input.GetMouseButton(0)&&outOfAmmo ==false)
+        //{
 
+        //    if (timer > 8)
+        //    {
+        //        Rigidbody clone;
+        //        audio.PlaÏOneShot(audio.clip);
+        //        clone = Instantiate(projectile, spawn, transform.rotation);
+        //        clone.velocity = Camera.main.transform.TransformDirection(Vector3.forward * speed);
 
-        }
-        if (Input.GetMouseButtonDown(0))
+        //        timer = 0;
+        //        ammoDetection();
+        //    }
+        //}
+        if (Input.GetMouseButtonDown(0) && outOfAmmo == false)
         {
 
             Rigidbody clone;
             audio.PlayOneShot(audio.clip);
             clone = Instantiate(projectile, spawn, transform.rotation);
             clone.velocity = Camera.main.transform.TransformDirection(Vector3.forward * speed);
-
+            ammo -= 1;
             timer = 0;
+        }
+        ammoDetection();
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            reload();
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -54,22 +60,41 @@ public class shooting : MonoBehaviour
     }
     void FixedUpdate()
     {
-     
+
         if (Input.GetMouseButton(0))
         {
 
 
 
 
-            timer+= 60 * Time.deltaTime;
-           
+            timer += 60 * Time.deltaTime;
+
 
 
         }
 
 
     }
+    void ammoDetection()
+    {
 
- 
-    
-} 
+        if (ammo <= 0)
+        {
+            outOfAmmo = true;
+        }
+        else
+        {
+            outOfAmmo = false;
+        }
+    }
+    void reload()
+    {
+        ammo = 4;
+        PopOutScript.disableAll = true;
+      
+
+    }
+
+
+
+}

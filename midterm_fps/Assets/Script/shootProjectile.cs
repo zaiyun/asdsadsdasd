@@ -18,17 +18,17 @@ public class shootProjectile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-       
+
         timer++;
         if (timer > spawnRate)
         {
-        
+
             spawnRate = Random.Range(60, 200);
             speed = Random.Range(20, 25);
             Rigidbody clone;
             clone = Instantiate(projectile, this.transform.position, transform.rotation);
-            clone.velocity = this.transform.TransformDirection(Vector3.up*speed);
-           
+            clone.velocity = this.transform.TransformDirection(Vector3.up * speed);
+
             timer = 0;
         }
     }

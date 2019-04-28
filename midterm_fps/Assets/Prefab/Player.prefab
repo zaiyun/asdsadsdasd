@@ -117,6 +117,8 @@ MonoBehaviour:
   speed: 140
   spawnPos: {fileID: 5907125234479132250}
   audio: {fileID: 5907125232718108305}
+  ammo: 3
+  outOfAmmo: 0
 --- !u!114 &5907125232718108306
 MonoBehaviour:
   m_ObjectHideFlags: 0
