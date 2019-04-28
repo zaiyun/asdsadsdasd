@@ -8,6 +8,7 @@ public class PopOutScript : MonoBehaviour
     BoxCollider coll;
     float length;
     Vector3 position;
+    Vector3 originalPos;
     public float popOutSpeed = 3.0f;
     public float popOutDistance;
    public bool pop = false;
@@ -19,9 +20,7 @@ public class PopOutScript : MonoBehaviour
         //coll = popout.GetComponent<BoxCollider>();
         //length = coll.bounds.size.y;
         position = popoutObj.localPosition;
-        //print(length);
-        //position.y = 0 - (length / 2.0f);
-        //popout.localPosition = position;
+        originalPos = popoutObj.localPosition;
     }
 
     // Update is called once per frame
@@ -29,9 +28,10 @@ public class PopOutScript : MonoBehaviour
     {
         if (pop)
         {
-        
+
+
             position = popoutObj.localPosition;
-            if (position.y <= popOutDistance)
+            if (position.y < popOutDistance)
             {
                 position.y += popOutSpeed;
                 popoutObj.localPosition = position;
@@ -39,7 +39,16 @@ public class PopOutScript : MonoBehaviour
             else
             {
                 position.y = popOutDistance;
+                popoutObj.localPosition = position;
             }
+
+
+        }
+        else
+        {
+
+            position.y = originalPos.y;
+            popoutObj.localPosition = position;
 
 
         }
