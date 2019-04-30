@@ -22,11 +22,11 @@ public class rayCasting : MonoBehaviour
         if (Physics.Raycast(myRay, rayDistance))
         {
 
-            playerController.isgrounded = true;
+            //playerController.isgrounded = true;
         }
         else
         {
-            playerController.isgrounded = false;
+           // playerController.isgrounded = false;
         }
 
     } 

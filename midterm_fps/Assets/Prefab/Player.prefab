@@ -237,7 +237,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 4
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -523,14 +523,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.21703616
       objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: f19fb19a7e83f4165a9402c843086a9e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3ba2828db22a54c3393d0313eb838d45, type: 2}
     - target: {fileID: 2300006, guid: f19fb19a7e83f4165a9402c843086a9e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4f274112778c84161a44e9bda233d61d, type: 2}
+    - target: {fileID: 2300002, guid: f19fb19a7e83f4165a9402c843086a9e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ba2828db22a54c3393d0313eb838d45, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f19fb19a7e83f4165a9402c843086a9e, type: 3}
 --- !u!4 &5907125234394161742 stripped
