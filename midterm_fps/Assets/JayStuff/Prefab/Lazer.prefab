@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1186304021532151836}
   - component: {fileID: 1186304021532151837}
   - component: {fileID: 1186304021532151842}
-  - component: {fileID: 1186304021532151839}
   m_Layer: 0
   m_Name: Lazer
   m_TagString: Untagged
@@ -141,16 +140,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daafd107871ea4a68bf85029b2439816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &1186304021532151839
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186304021532151843}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 2}
-  m_Center: {x: 0, y: -0.75, z: 0.5}
