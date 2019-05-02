@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class FpsController : MonoBehaviour
 {
@@ -23,12 +24,17 @@ public class FpsController : MonoBehaviour
 
     bool cursorVisible;
 
+
+    //JayStuff
+    public static bool Jumping;
+
     // Use this for initialization
     void Start()
     {
         cameraT = Camera.main.transform;
         rigidbodyR = GetComponent<Rigidbody>();
         LockMouse();
+        Jumping = false;
     }
 
     // Update is called once per frame
@@ -51,7 +57,13 @@ public class FpsController : MonoBehaviour
             if (grounded)
             {
                 rigidbodyR.AddForce(transform.up * jumpForce);
+                Jumping = true;
             }
+
+        }
+        else
+        {
+            Jumping = false;
         }
 
         Ray ray = new Ray(transform.position, -transform.up);
