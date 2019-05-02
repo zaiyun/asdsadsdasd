@@ -55,7 +55,10 @@ public class CharacterMovement : MonoBehaviour
         }
         if (pushed)
         {
-            moveDirection.y = pushedHeight;
+
+            moveDirection.x-= pushedHeight;
+           //moveDirection.z = pushedHeight;
+            //moveDirection.y = pushedHeight;
             pushed = false;
         }
 
@@ -91,4 +94,5 @@ public class CharacterMovement : MonoBehaviour
         Time.fixedDeltaTime = 0.02f;
 
     }
+  
 }

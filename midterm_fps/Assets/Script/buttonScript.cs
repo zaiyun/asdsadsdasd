@@ -6,6 +6,7 @@ public class buttonScript : MonoBehaviour
 {
     public GameObject main;
     public Collider trigger;
+    
  //   public Object popoutscript;
     // Start is called before the first frame update
     void Start()
@@ -16,14 +17,19 @@ public class buttonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(PopOutScript.disableAll == true)
+        {
+            trigger.enabled = false;
+        }
     }
- private void OnCollisionEnter(Collision collision)
+
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "projectile")
         {
-            trigger.enabled = true;
-        main.GetComponent<PopOutScript>().pop = !main.GetComponent<PopOutScript>().pop;
+            PopOutScript.disableAll = false;
+            trigger.enabled = !trigger.enabled;
+            main.GetComponent<PopOutScript>().pop = !main.GetComponent<PopOutScript>().pop;
 
         }
     }

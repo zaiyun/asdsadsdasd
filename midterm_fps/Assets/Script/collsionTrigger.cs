@@ -9,7 +9,7 @@ public class collsionTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audio = GameObject.Find("testTarget").GetComponent<AudioSource>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,6 +23,7 @@ public class collsionTrigger : MonoBehaviour
         {
             hit = true;
             audio.PlayOneShot(audio.clip);
+            GetComponent<Animator>().enabled = true;
         }
     }
 }

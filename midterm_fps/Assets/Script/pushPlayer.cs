@@ -16,16 +16,13 @@ public class pushPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            
-            CharacterMovement.pushedHeight = pushSpeed;
-            CharacterMovement.pushed = true;
-            print("enter");
+            other.GetComponent<Rigidbody>().velocity = this.transform.TransformDirection(Vector3.up * pushSpeed);
         }
     }
 }
