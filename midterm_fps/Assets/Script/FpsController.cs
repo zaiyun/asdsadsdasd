@@ -26,7 +26,10 @@ public class FpsController : MonoBehaviour
 
 
     //JayStuff
-    public static bool Jumping;
+    public bool Jumping;
+    public AudioClip Hopping;
+    public AudioSource HopAudio;
+   
 
     // Use this for initialization
     void Start()
@@ -35,6 +38,7 @@ public class FpsController : MonoBehaviour
         rigidbodyR = GetComponent<Rigidbody>();
         LockMouse();
         Jumping = false;
+        HopAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -58,12 +62,15 @@ public class FpsController : MonoBehaviour
             {
                 rigidbodyR.AddForce(transform.up * jumpForce);
                 Jumping = true;
+               
             }
 
         }
         else
         {
             Jumping = false;
+           
+
         }
 
         Ray ray = new Ray(transform.position, -transform.up);
@@ -90,6 +97,9 @@ public class FpsController : MonoBehaviour
         //        LockMouse();
         //    }
         //}
+
+        //Play Hop Sound
+        PlayerHop();
     }
 
     void FixedUpdate()
@@ -110,4 +120,20 @@ public class FpsController : MonoBehaviour
         Cursor.visible = false;
         cursorVisible = false;
     }
+
+
+    void PlayerHop() 
+    {
+        if(Jumping == true) 
+        {
+
+            HopAudio.PlayOneShot(Hopping, 1f);
+           
+        }
+
+
+    }
+
+
+
 }

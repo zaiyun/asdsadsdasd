@@ -10,12 +10,13 @@ public class shooting : MonoBehaviour
     public float speed = 40;
     public Transform spawnPos;
     public AudioSource audio;
+    public AudioClip Bullet;
     public int ammo = 4;
     public bool outOfAmmo = false;
     // Start is called before the first frame update
     void Start()
     {
-
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class shooting : MonoBehaviour
         {
 
             Rigidbody clone;
-            audio.PlayOneShot(audio.clip);
+            audio.PlayOneShot(Bullet, 1f);
             clone = Instantiate(projectile, spawn, transform.rotation);
             clone.velocity = Camera.main.transform.TransformDirection(Vector3.forward * speed);
             ammo -= 1;

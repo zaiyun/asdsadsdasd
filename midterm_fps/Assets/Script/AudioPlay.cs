@@ -7,7 +7,8 @@ public class AudioPlay : MonoBehaviour
 {
 
 
-    public AudioSource Hop;
+
+    public AudioSource DeathSound;
    
 
     // Start is called before the first frame update
@@ -19,11 +20,18 @@ public class AudioPlay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(FpsController.Jumping == true) {
+        //if(FpsController.Jumping == true) {
 
-            Hop.Play();
+        //    Hop.Play();
         
-        }
+        //}
+
+        if(LazerScript.diehard == true) {
+
+
+            DeathSound.Play();
+           
+             }
     }
 
 }

@@ -9,10 +9,17 @@ public class LazerScript : MonoBehaviour
 {
     
     private LineRenderer Lr;
+    public static bool diehard;
+    public GameObject Player;
+    public AudioSource Lazeraudio;
+    public AudioClip Deathaudio;
+    
     // Start is called before the first frame update
     void Start()
     {
         Lr = GetComponent<LineRenderer>();
+        diehard = false;
+        Lazeraudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,12 +38,51 @@ public class LazerScript : MonoBehaviour
             }
 
             if (hit.collider.tag == "Player") {
+                diehard = true;
 
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Player.GetComponent<FpsController>().walkSpeed = 0f;
+               
+                Invoke("GameRestartScene", 1.3f);
 
             }
+            else {
+
+                diehard = false;
+               }
 
         }
         else Lr.SetPosition(1, transform.forward * 5000);
+
+
+        //Play Sound
+        SoundPlay();
     }
+
+
+
+
+    void GameRestartScene()
+    {
+
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+
+    }
+
+    void SoundPlay() {
+    
+     if(diehard == true) {
+
+
+            Lazeraudio.PlayOneShot(Deathaudio, 1f);
+     }
+
+
+    }
+
 }
+
+
+
+
