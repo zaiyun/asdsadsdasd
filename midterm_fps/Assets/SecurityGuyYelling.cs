@@ -19,7 +19,7 @@ public class SecurityGuyYelling : MonoBehaviour
     private void OnTriggerEnter(Collider other)
 
     {
-        if (this.GetComponentInParent<collsionTrigger>().hit == false)
+        if (this.GetComponentInParent<collsionTrigger>().hit == false&& other.tag=="Player")
         {
             audio.PlayOneShot(audio.clip);
         }
