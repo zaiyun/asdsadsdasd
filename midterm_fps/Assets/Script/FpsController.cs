@@ -85,18 +85,7 @@ public class FpsController : MonoBehaviour
             grounded = false;
         }
 
-        /* Lock/unlock mouse on click */
-        //if (Input.GetMouseButtonUp(0))
-        //{
-        //    if (!cursorVisible)
-        //    {
-        //        UnlockMouse();
-        //    }
-        //    else
-        //    {
-        //        LockMouse();
-        //    }
-        //}
+ 
 
         //Play Hop Sound
         PlayerHop();
