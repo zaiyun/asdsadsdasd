@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PopOutScript : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class PopOutScript : MonoBehaviour
     public float popOutDistance;
     public static bool disableAll; 
    public bool pop = false;
+
+
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +25,8 @@ public class PopOutScript : MonoBehaviour
         //length = coll.bounds.size.y;
         position = popoutObj.localPosition;
         originalPos = popoutObj.localPosition;
+
+
     }
 
     // Update is called once per frame
@@ -35,12 +42,14 @@ public class PopOutScript : MonoBehaviour
         if (pop==true)
         {
 
+           
 
             position = popoutObj.localPosition;
             if (position.y < popOutDistance)
             {
                 position.y += popOutSpeed;
                 popoutObj.localPosition = position;
+
             }
             else
             {
@@ -59,5 +68,10 @@ public class PopOutScript : MonoBehaviour
 
         }
     }
+
    
+
+
+   
+
 }
