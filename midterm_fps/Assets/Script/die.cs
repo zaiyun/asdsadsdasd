@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class die : MonoBehaviour
 {
+    public AudioSource dieSource;
+    public AudioClip dieClip;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        dieSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,7 +26,21 @@ public class die : MonoBehaviour
         print("enter");
         if (collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            dieSoundPlay();
+            Invoke("RestartAgain", 1.2f);
         }
+    }
+
+
+    void dieSoundPlay() {
+
+        dieSource.PlayOneShot(dieClip);
+     
+       }
+
+
+    void RestartAgain() {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
