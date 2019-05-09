@@ -5895,7 +5895,7 @@ PrefabInstance:
     - target: {fileID: 5700684631507815977, guid: 2c05fce0cb8a44cd5955041ff3c2961e,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5700684631507815990, guid: 2c05fce0cb8a44cd5955041ff3c2961e,
         type: 3}
@@ -6224,7 +6224,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053959311}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.65622866, y: 19.790668, z: 1}
