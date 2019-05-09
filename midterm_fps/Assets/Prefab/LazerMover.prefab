@@ -427,6 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daafd107871ea4a68bf85029b2439816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 5907125232718108314, guid: 98087fc1a67764b5a993aeb63c7cdc93, type: 3}
   Lazeraudio: {fileID: 7880824386142533681}
   Deathaudio: {fileID: 7880824385320955785}
