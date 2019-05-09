@@ -12,7 +12,7 @@ public class LazerScript : MonoBehaviour
     public static bool diehard;
     public GameObject Player;
     public AudioSource Lazeraudio;
-    public AudioClip Deathaudio;
+    public AudioSource Deathaudio;
     
     // Start is called before the first frame update
     void Start()
@@ -75,7 +75,7 @@ public class LazerScript : MonoBehaviour
      if(diehard == true) {
 
 
-            Lazeraudio.PlayOneShot(Deathaudio, 1f);
+            Deathaudio.Play();
      }
 
 
